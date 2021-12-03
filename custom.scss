@@ -1,0 +1,56 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+// Custom
+@import url("https://fonts.googleapis.com/css2?family=Exo+2&display=swap");
+$font-family-sans-serif: "Exo 2", sans-serif !important;
+
+// $foreground: #f3f4f7;
+// $background: #000;
+
+$foreground: #000;
+$background: #d4d5d9;
+
+$custom-colors: (
+    "backgr": $background,
+    "foregr": $foreground,
+);
+.navbar-style-color {
+    @extend .navbar-light;
+}
+
+// Source mixin
+@mixin make-container($padding-x: $container-padding-x) {
+    width: 100%;
+    padding-right: $padding-x;
+    padding-left: $padding-x;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.blogpage {
+    @include make-container();
+}
+
+@media (min-width: 576px) {
+    .blogpage {
+        @include make-container($padding-x: 10vw);
+    }
+}
+
+@media (min-width: 1200px) {
+    .blogpage {
+        @include make-container($padding-x: 20vw);
+    }
+}
+
+// Override
+$body-bg: $background;
+// $theme-colors: (
+//     "primary": #2b4bff,
+//     "secondary": #a2a2a2
+//         //...other variables, you can find them in node_modules/bootstrap/scss/_variables.scss,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+// );
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+// import to set changes
+@import "../node_modules/bootstrap/scss/bootstrap";
